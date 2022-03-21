@@ -1,0 +1,9 @@
+server:
+  port: 8030
+  max-http-header-size: 65536
+
+spring:
+  application:
+    name: bb-netty
+  profiles:
+    active: dev

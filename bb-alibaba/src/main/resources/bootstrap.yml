@@ -1,0 +1,48 @@
+server:
+  port: 8010
+  max-http-header-size: 65536
+
+spring:
+  application:
+    name: my-cloud
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 8.129.122.100:8848
+        file-extension: yaml  # 配置内容的数据格式，默认为 properties
+        namespace: c2624b48-10f9-42f8-a097-30914b416976
+        group: DEFAULT_GROUP
+        shared-dataids: cloud-common.yaml #共享配置需要在同一個group，ext灵活点
+        ext-config[0]:
+          data-id: cloud-ext.yaml
+          group: DEFAULT_GROUP
+          refresh: true
+
+      discovery:
+        server-addr: 8.129.122.100:8848
+        namespace: c2624b48-10f9-42f8-a097-30914b416976
+
+    sentinel:
+      datasource:
+        ds1:
+          nacos:
+            serverAddr: 8.129.122.100:8848
+            dataId: springboot-sentinel-flow
+            namespace: 74a80117-b143-44ea-b278-2345f2be9bc5
+            username: nacos
+            password: nacos
+            dataType: json
+            ruleType: flow
+        ds2:
+          nacos:
+            serverAddr: 8.129.122.100:8848
+            dataId: springboot-sentinel-degrade
+            namespace: 74a80117-b143-44ea-b278-2345f2be9bc5
+            username: nacos
+            password: nacos
+            dataType: json
+            ruleType: degrade
+      transport:
+        dashboard: 127.0.0.1:8088
