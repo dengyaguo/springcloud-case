@@ -1,0 +1,7 @@
+POST http://localhost:80/api/item
+Content-Type: application/json
+
+{}
+
+###
+GET http://localhost:8070/extension/test

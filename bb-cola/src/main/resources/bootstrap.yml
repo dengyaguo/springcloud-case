@@ -1,0 +1,9 @@
+server:
+  port: 8070
+  max-http-header-size: 65536
+
+spring:
+  application:
+    name: bb-cola
+  profiles:
+    active: dev
