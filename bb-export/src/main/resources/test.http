@@ -1,0 +1,5 @@
+POST localhost:8070/exporttest/test
+Content-Type: application/json
+
+{}
+
